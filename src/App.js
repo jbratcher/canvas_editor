@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Canvas from './Canvas'
 import './App.css';
 
 class App extends Component {
+  
+  constructor() {
+    super();
+    this.state={};
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      
+        <header className="Header">
+          <p className="Tagline">Canvas Editor</p>
         </header>
+        
+        <main>
+        
+          <h1>Main Section</h1>
+          
+          <Canvas />
+        
+        </main>
+        
+        <footer className="Footer">
+          <p>Canvas Editor 2018</p>
+        </footer>
+        
       </div>
     );
   }
