@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 class Canvas extends Component {
     
@@ -24,17 +24,17 @@ class Canvas extends Component {
     updateCanvas() {
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillStyle = "#eee";
-        ctx.fillRect(0,0, 100, 100);
+        ctx.fillRect(0,0, 300, 300);
     }
     
   render() {
     return (
       
-      <section>
+      <section className="canvasContainer">
       
-        <button onClick={this.drawSquare}>Draw Square</button>
+        <button className="drawSquare" onClick={this.drawSquare}>Draw Square</button>
         
-        <canvas ref="canvas" width="640px" height="480px">
+        <canvas ref="canvas" height="800" width="100%">
           Canvas (Your browser doesn't support the canvas element).
         </canvas>
       

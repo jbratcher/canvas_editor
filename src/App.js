@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Canvas from './Canvas'
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   
