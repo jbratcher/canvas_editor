@@ -5,14 +5,16 @@ class Canvas extends Component {
     
     constructor(props) {
         super(props);
+        
         this.state = {
-          height: window.innerHeight,
-          width: window.innerWidth
+          height: null,
+          width: null
         };
     }
     
     drawSquare = () => {
-      const {height, width} = this.state;
+      const height = this.refs.canvasContainer.offsetHeight;
+      const width = this.refs.canvasContainer.offsetWidth;
       const ctx = this.refs.canvas.getContext('2d');
       this.updateCanvas();
       ctx.fillStyle = "blue";
@@ -24,15 +26,25 @@ class Canvas extends Component {
     //   null;
     // }
     
-   componentDidMount() {
-        this.updateCanvas();
+    componentDidMount() {
+     
+      this.setState({
+        height: this.refs.canvasContainer.offsetHeight,
+        width: this.refs.canvasContainer.offsetWidth
+      });
+     
+      this.updateCanvas();
+      
+      console.log("Canvas Component loaded state: ", this.state);
+      
     }
     
     updateCanvas() {
-      const {height, width} = this.state;
+      const height = this.refs.canvasContainer.offsetHeight;
+      const width = this.refs.canvasContainer.offsetWidth;
       const ctx = this.refs.canvas.getContext('2d');
-      ctx.canvas.width  = window.innerWidth;
-      ctx.canvas.height = window.innerHeight;
+      ctx.canvas.width  = width;
+      ctx.canvas.height = height;
       ctx.fillStyle = "#eee";
       ctx.fillRect(0,0, width, height);
       console.log("Browser size: \n", "Width:", width, "Height", height);
@@ -41,11 +53,11 @@ class Canvas extends Component {
   render() {
     return (
       
-      <section className="canvasContainer">
+      <section className="canvasContainer" ref="canvasContainer">
       
         <button className="drawSquare" onClick={this.drawSquare}>Draw Square</button>
         
-        <canvas onClick={this.startMouseDrag} ref="canvas" height="800" width="100%">
+        <canvas onClick={this.startMouseDrag} ref="canvas" height="100%" width="100%">
           Canvas (Your browser doesn't support the canvas element).
         </canvas>
       

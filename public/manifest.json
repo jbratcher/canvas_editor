@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Canvas Editor",
+  "name": "A HTML5 Canvas Editing App Built With React",
   "icons": [
     {
       "src": "favicon.ico",

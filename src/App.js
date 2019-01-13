@@ -14,12 +14,12 @@ class App extends Component {
       <div className="App">
       
         <header className="Header">
-          <p className="Tagline">Canvas Editor</p>
+          <h1 className="Tagline">Canvas Editor</h1>
         </header>
         
         <main>
         
-          <h1>Main Section</h1>
+          <h2>Main Section</h2>
           
           <Canvas />
         
