@@ -25,18 +25,21 @@ class Canvas extends Component {
     
     drawCircle = () => {
       const {ctx} = this.state;
-      this.updateCanvas();
+      ctx.restore();
+      ctx.save();
       ctx.beginPath();
       ctx.arc(100, 75, 50, 0, 2 * Math.PI);
       ctx.fillStyle = "green";
       ctx.fill();
       ctx.stroke();
+      ctx.restore();
       console.log(this.state);
     }
     
     drawTriangle = () => {
       const {ctx} = this.state;
-      this.updateCanvas();
+      ctx.restore();
+      ctx.save();
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);
@@ -44,6 +47,7 @@ class Canvas extends Component {
       ctx.fillStyle="red";
       ctx.fill();
       ctx.stroke();
+      ctx.restore();
       console.log(this.state);
     }
     
@@ -51,6 +55,7 @@ class Canvas extends Component {
       const height = this.refs.canvasContainer.offsetHeight;
       const width = this.refs.canvasContainer.offsetWidth;
       const ctx = this.refs.canvas.getContext('2d');
+      ctx.save();
       ctx.canvas.width  = width;
       ctx.canvas.height = height;
       ctx.fillStyle = "#eee";
