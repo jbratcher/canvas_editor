@@ -34,10 +34,17 @@ main {
   width: 100vw;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
 .canvasContainer {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 60vh;
   width: 100%;
 
     .drawSquare {
