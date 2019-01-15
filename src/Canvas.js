@@ -13,12 +13,22 @@ class Canvas extends Component {
         };
     }
     
+    clearCanvas = () => {
+      const {ctx, width, height} = this.state;
+      ctx.save();
+      ctx.clearRect(0, 0, width, height);
+      this.updateCanvas();
+      ctx.restore();
+    }
+    
     drawSquare = () => {
       const {ctx, height, width} = this.state;
-      this.updateCanvas();
+      ctx.restore();
+      ctx.save();
       ctx.fillStyle = "blue";
       ctx.fillRect(width*0.125, height*0.125, width*0.25, height*0.25);
       ctx.stroke();
+      ctx.restore();
       console.log("Square drawn at:", "\nx1: ", width*0.125, "\ny1: ", height*0.125, "\nx2: ", width*0.25, "\ny2: ", height*0.25);
       console.log(this.state);
     }
@@ -89,7 +99,9 @@ class Canvas extends Component {
           <button className="drawCircle" onClick={this.drawCircle}>Draw Circle</button>
           
           <button className="drawTriangle" onClick={this.drawTriangle}>Draw Triangle</button>
-        
+          
+          <button className="clearCanvas" onClick={this.clearCanvas}>Clear Canvas</button>
+          
         </section>
         
         <section className="canvasContainer" ref="canvasContainer">
