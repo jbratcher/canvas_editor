@@ -14,6 +14,12 @@ body {
   color: #333;
 }
 
+button {
+  border: 1px solid #000;
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -36,8 +42,12 @@ main {
 
 .buttonContainer {
   display: flex;
-  justify-content: space-around;
-  padding: 1rem 0;
+  padding: 1rem;
+  
+  button {
+    margin: 0 0.5rem;
+  }
+  
 }
 
 .canvasContainer {
@@ -47,10 +57,6 @@ main {
   min-height: 60vh;
   width: 100%;
 
-    .drawSquare {
-      margin: 1rem 0;
-      width: 25%;
-      align-self: center;
-    }
+
     
 }

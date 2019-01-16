@@ -16,41 +16,31 @@ class Canvas extends Component {
     
     clearCanvas = () => {
       const {ctx, width, height} = this.state;
-      ctx.save();
       ctx.clearRect(0, 0, width, height);
       this.updateCanvas();
-      ctx.restore();
     }
     
     drawSquare = () => {
       const {ctx, height, width} = this.state;
-      ctx.restore();
-      ctx.save();
       ctx.fillStyle = "blue";
       ctx.fillRect(width*0.125, height*0.125, width*0.25, height*0.25);
       ctx.stroke();
-      ctx.restore();
       console.log("Square drawn at:", "\nx1: ", width*0.125, "\ny1: ", height*0.125, "\nx2: ", width*0.25, "\ny2: ", height*0.25);
       console.log(this.state);
     }
     
     drawCircle = () => {
       const {ctx} = this.state;
-      ctx.restore();
-      ctx.save();
       ctx.beginPath();
       ctx.arc(100, 75, 50, 0, 2 * Math.PI);
       ctx.fillStyle = "green";
       ctx.fill();
       ctx.stroke();
-      ctx.restore();
       console.log(this.state);
     }
     
     drawTriangle = () => {
       const {ctx} = this.state;
-      ctx.restore();
-      ctx.save();
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);
@@ -58,7 +48,6 @@ class Canvas extends Component {
       ctx.fillStyle="red";
       ctx.fill();
       ctx.stroke();
-      ctx.restore();
       console.log(this.state);
     }
     
@@ -66,11 +55,13 @@ class Canvas extends Component {
       const height = this.refs.canvasContainer.offsetHeight;
       const width = this.refs.canvasContainer.offsetWidth;
       const ctx = this.refs.canvas.getContext('2d');
-      ctx.save();
       ctx.canvas.width  = width;
       ctx.canvas.height = height;
+      ctx.beginPath();
       ctx.fillStyle = "#eee";
-      ctx.fillRect(0,0, width, height);
+      ctx.rect(5,0, ctx.canvas.width-10, ctx.canvas.height);
+      ctx.fill();
+      ctx.stroke();
       console.log("Browser size: \n", "Width:", width, "Height", height);
     }
     
