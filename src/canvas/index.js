@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.scss';
+import Menu from './Menu';
+import '../App.scss';
 
 class Canvas extends Component {
     
@@ -88,22 +89,18 @@ class Canvas extends Component {
     }
     
   render() {
+    
     return (
       
       <React.Fragment>
       
-        <section className="buttonContainer ref=buttonContainer">
-        
-          <button className="drawSquare" onClick={this.drawSquare}>Draw Square</button>
-          
-          <button className="drawCircle" onClick={this.drawCircle}>Draw Circle</button>
-          
-          <button className="drawTriangle" onClick={this.drawTriangle}>Draw Triangle</button>
-          
-          <button className="clearCanvas" onClick={this.clearCanvas}>Clear Canvas</button>
-          
-        </section>
-        
+        <Menu 
+          drawCircle={this.drawCircle}
+          drawSquare={this.drawSquare}
+          drawTriangle={this.drawTriangle}
+          clearCanvas={this.clearCanvas}
+        />
+      
         <section className="canvasContainer" ref="canvasContainer">
           
           <canvas onClick={this.startMouseDrag} ref="canvas" height="100%" width="100%">
