@@ -22,7 +22,9 @@ class Menu extends Component {
       
     return (
       
-        <section className="buttonContainer ref=buttonContainer">
+      <React.Fragment>
+      
+        <section className="menuContainer ref=menuContainer">
         
           <button className="drawSquare" onClick={drawSquare}>Draw Square</button>
           
@@ -32,7 +34,23 @@ class Menu extends Component {
           
           <button className="clearCanvas" onClick={clearCanvas}>Clear Canvas</button>
           
+          <section className="drawDimensions">
+          
+            <section className="column">
+              <label>x: <input type="text"></input></label>
+              <label>y: <input type="text"></input></label>
+            </section>
+            
+            <section className="column">
+              <label>width: <input type="text"></input></label>
+              <label>height: <input type="text"></input></label>
+            </section>
+          
+          </section>
+          
         </section>
+          
+      </React.Fragment>
       
     );
   }

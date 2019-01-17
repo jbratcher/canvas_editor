@@ -14,6 +14,11 @@ body {
   color: #333;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   border: 1px solid #000;
   border-radius: 1rem;
@@ -40,12 +45,34 @@ main {
   width: 100vw;
 }
 
-.buttonContainer {
+.menuContainer {
   display: flex;
+  height: 5rem;
   padding: 1rem;
   
   button {
     margin: 0 0.5rem;
+  }
+  
+  .drawDimensions {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    height: 4rem;
+    
+    .column {
+      padding: 0 0.5rem;
+    }
+    
+    label {
+      font-size: 0.75rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    input {
+      width: 1rem;
+    }
+      
   }
   
 }
@@ -56,7 +83,5 @@ main {
   height: 100%;
   min-height: 60vh;
   width: 100%;
-
-
     
 }
