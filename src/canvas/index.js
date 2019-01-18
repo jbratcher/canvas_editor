@@ -10,7 +10,11 @@ class Canvas extends Component {
         this.state = {
           ctx: null,
           height: null,
-          width: null
+          width: null,
+          xStartPos: 0,
+          yStartPos: 0,
+          inputWidth: 0,
+          inputHeight: 0
         };
     }
     
@@ -21,9 +25,9 @@ class Canvas extends Component {
     }
     
     drawSquare = () => {
-      const {ctx, height, width} = this.state;
+      const {ctx, height, width, xStartPos} = this.state;
       ctx.fillStyle = "blue";
-      ctx.fillRect(width*0.125, height*0.125, width*0.25, height*0.25);
+      ctx.fillRect(xStartPos, height*0.125, width*0.25, height*0.25);
       ctx.stroke();
       console.log("Square drawn at:", "\nx1: ", width*0.125, "\ny1: ", height*0.125, "\nx2: ", width*0.25, "\ny2: ", height*0.25);
       console.log(this.state);
@@ -50,6 +54,15 @@ class Canvas extends Component {
       ctx.stroke();
       console.log(this.state);
     }
+    
+    handleXStartChange = e => {
+      e.preventDefault();
+      this.setState({
+        xStartPos: e.target.value
+      });
+      console.log(this.state);
+    }
+    
     
     updateCanvas() {
       const height = this.refs.canvasContainer.offsetHeight;
@@ -81,15 +94,19 @@ class Canvas extends Component {
     
   render() {
     
+    const { xStartPos } = this.state;
+    
     return (
       
       <React.Fragment>
       
         <Menu 
+          clearCanvas={this.clearCanvas}
           drawCircle={this.drawCircle}
           drawSquare={this.drawSquare}
           drawTriangle={this.drawTriangle}
-          clearCanvas={this.clearCanvas}
+          handleXStartChange={this.handleXStartChange}
+          xStartPos={xStartPos}
         />
       
         <section className="canvasContainer" ref="canvasContainer">

@@ -7,6 +7,7 @@ class Menu extends Component {
         super(props);
         
         this.state = {
+          xStartPos: 0
         };
     }
     
@@ -18,7 +19,14 @@ class Menu extends Component {
     
   render() {
       
-    const {drawCircle, drawSquare, drawTriangle, clearCanvas} = this.props;
+    const {
+      clearCanvas, 
+      drawCircle, 
+      drawSquare, 
+      drawTriangle, 
+      handleXStartChange,
+      xStartPos,
+    } = this.props;
       
     return (
       
@@ -37,7 +45,15 @@ class Menu extends Component {
           <section className="drawDimensions">
           
             <section className="column">
-              <label>x: <input type="text"></input></label>
+              <label>x: 
+                <input 
+                  onChange={handleXStartChange}
+                  pattern="[0-9]*" 
+                  value={xStartPos}
+                  type="text" 
+                >
+                </input>
+              </label>
               <label>y: <input type="text"></input></label>
             </section>
             
