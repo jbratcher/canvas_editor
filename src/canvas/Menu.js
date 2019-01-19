@@ -6,9 +6,7 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         
-        this.state = {
-          xStartPos: 0
-        };
+        this.state = {};
     }
     
     componentDidMount() {
@@ -24,8 +22,11 @@ class Menu extends Component {
       drawCircle, 
       drawSquare, 
       drawTriangle, 
-      handleXStartChange,
+      handleInputChange,
       xStartPos,
+      yStartPos,
+      inputWidth,
+      inputHeight
     } = this.props;
       
     return (
@@ -34,32 +35,84 @@ class Menu extends Component {
       
         <section className="menuContainer ref=menuContainer">
         
-          <button className="drawSquare" onClick={drawSquare}>Draw Square</button>
+          <button 
+            className="drawSquare" 
+            onClick={drawSquare}
+          >
+            Draw Square
+          </button>
           
-          <button className="drawCircle" onClick={drawCircle}>Draw Circle</button>
+          <button 
+            className="drawCircle" 
+            onClick={drawCircle}
+          >
+              Draw Circle
+          </button>
           
-          <button className="drawTriangle" onClick={drawTriangle}>Draw Triangle</button>
+          <button 
+            className="drawTriangle" 
+            onClick={drawTriangle}
+          >
+            Draw Triangle
+            </button>
           
-          <button className="clearCanvas" onClick={clearCanvas}>Clear Canvas</button>
+          <button 
+            className="clearCanvas" 
+            onClick={clearCanvas}
+          >
+            Clear Canvas
+          </button>
           
           <section className="drawDimensions">
           
             <section className="column">
               <label>x: 
                 <input 
-                  onChange={handleXStartChange}
+                  name="xStartPos"
+                  onChange={handleInputChange}
                   pattern="[0-9]*" 
                   value={xStartPos}
                   type="text" 
                 >
                 </input>
               </label>
-              <label>y: <input type="text"></input></label>
+              
+              <label>y: 
+                <input 
+                  name="yStartPos"
+                  onChange={handleInputChange}
+                  pattern="[0-9]*" 
+                  value={yStartPos}
+                  type="text" 
+                >
+                </input>
+              </label>
             </section>
             
             <section className="column">
-              <label>width: <input type="text"></input></label>
-              <label>height: <input type="text"></input></label>
+            
+              <label>width: 
+                <input 
+                  name="inputWidth"
+                  onChange={handleInputChange}
+                  pattern="[0-9]*" 
+                  value={inputWidth}
+                  type="text" 
+                >
+                </input>
+              </label>
+              
+              <label>height:
+                <input 
+                  name="inputHeight"
+                  onChange={handleInputChange}
+                  pattern="[0-9]*" 
+                  value={inputHeight}
+                  type="text" 
+                >
+                </input>
+              </label>
+              
             </section>
           
           </section>

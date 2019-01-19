@@ -25,11 +25,13 @@ class Canvas extends Component {
     }
     
     drawSquare = () => {
-      const {ctx, height, width, xStartPos} = this.state;
+      const {ctx, xStartPos, yStartPos, inputHeight, inputWidth} = this.state;
+      let drawWidth = (Number(inputWidth) + Number(xStartPos));
+      let drawHeight = (Number(inputHeight) + Number(yStartPos));
       ctx.fillStyle = "blue";
-      ctx.fillRect(xStartPos, height*0.125, width*0.25, height*0.25);
+      ctx.fillRect(Number(xStartPos), Number(yStartPos), drawWidth, drawHeight);
       ctx.stroke();
-      console.log("Square drawn at:", "\nx1: ", width*0.125, "\ny1: ", height*0.125, "\nx2: ", width*0.25, "\ny2: ", height*0.25);
+      console.log("Square drawn at:", "\nx1: ", xStartPos, "\ny1: ", yStartPos, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
       console.log(this.state);
     }
     
@@ -55,12 +57,12 @@ class Canvas extends Component {
       console.log(this.state);
     }
     
-    handleXStartChange = e => {
+    handleInputChange = e => {
       e.preventDefault();
       this.setState({
-        xStartPos: e.target.value
+        [e.target.name]: e.target.value
       });
-      console.log(this.state);
+      console.log(e.target.name);
     }
     
     
@@ -94,7 +96,12 @@ class Canvas extends Component {
     
   render() {
     
-    const { xStartPos } = this.state;
+    const { 
+      xStartPos,
+      yStartPos,
+      inputHeight,
+      inputWidth
+    } = this.state;
     
     return (
       
@@ -105,8 +112,12 @@ class Canvas extends Component {
           drawCircle={this.drawCircle}
           drawSquare={this.drawSquare}
           drawTriangle={this.drawTriangle}
-          handleXStartChange={this.handleXStartChange}
+          handleInputChange={this.handleInputChange}
+          inputHeight={inputHeight}
+          inputWidth={inputWidth}
           xStartPos={xStartPos}
+          yStartPos={yStartPos}
+          
         />
       
         <section className="canvasContainer" ref="canvasContainer">
