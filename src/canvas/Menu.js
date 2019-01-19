@@ -23,10 +23,11 @@ class Menu extends Component {
       drawSquare, 
       drawTriangle, 
       handleInputChange,
-      xStartPos,
-      yStartPos,
+      handleInputFocus,
       inputWidth,
-      inputHeight
+      inputHeight,
+      XOffset,
+      yOffset
     } = this.props;
       
     return (
@@ -68,10 +69,11 @@ class Menu extends Component {
             <section className="column">
               <label>x: 
                 <input 
-                  name="xStartPos"
+                  name="XOffset"
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   pattern="[0-9]*" 
-                  value={xStartPos}
+                  value={XOffset}
                   type="text" 
                 >
                 </input>
@@ -79,10 +81,11 @@ class Menu extends Component {
               
               <label>y: 
                 <input 
-                  name="yStartPos"
+                  name="yOffset"
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   pattern="[0-9]*" 
-                  value={yStartPos}
+                  value={yOffset}
                   type="text" 
                 >
                 </input>
@@ -95,6 +98,7 @@ class Menu extends Component {
                 <input 
                   name="inputWidth"
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   pattern="[0-9]*" 
                   value={inputWidth}
                   type="text" 
@@ -106,6 +110,7 @@ class Menu extends Component {
                 <input 
                   name="inputHeight"
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   pattern="[0-9]*" 
                   value={inputHeight}
                   type="text" 
