@@ -24,9 +24,11 @@ class Menu extends Component {
       drawTriangle, 
       handleInputChange,
       handleInputFocus,
-      inputWidth,
+      inputCircleRadius,
+      inputFillColor,
       inputHeight,
-      XOffset,
+      inputWidth,
+      xOffset,
       yOffset
     } = this.props;
       
@@ -64,16 +66,18 @@ class Menu extends Component {
             Clear Canvas
           </button>
           
-          <section className="drawDimensions">
+        </section>
+        
+        <section className="attributesMenu">
           
             <section className="column">
               <label>x: 
                 <input 
-                  name="XOffset"
+                  name="xOffset"
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   pattern="[0-9]*" 
-                  value={XOffset}
+                  value={xOffset}
                   type="text" 
                 >
                 </input>
@@ -119,10 +123,36 @@ class Menu extends Component {
               </label>
               
             </section>
+            
+            <section className="column">
+              
+              <label>radius:
+                <input 
+                  name="inputCircleRadius"
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                  pattern="[0-9]*" 
+                  value={inputCircleRadius}
+                  type="text" 
+                >
+                </input>
+              </label>
+              
+              <label>fill color:
+                <input 
+                  name="inputFillColor"
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                  pattern="[0-9]*" 
+                  value={inputFillColor}
+                  type="text" 
+                >
+                </input>
+              </label>
+              
+            </section>
           
           </section>
-          
-        </section>
           
       </React.Fragment>
       

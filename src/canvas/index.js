@@ -9,12 +9,14 @@ class Canvas extends Component {
         
         this.state = {
           ctx: null,
-          canvasHeight: null,
-          canvasWidth: null,
-          XOffset: 0,
+          canvasHeight: 0,
+          canvasWidth: 0,
+          xOffset: 0,
           yOffset: 0,
-          inputWidth: 0,
-          inputHeight: 0
+          inputCircleRadius: 0,
+          inputFillColor: "",
+          inputHeight: 0,
+          inputWidth: 0
         };
     }
     
@@ -25,33 +27,33 @@ class Canvas extends Component {
     }
     
     drawSquare = () => {
-      const {ctx, XOffset, yOffset, inputHeight, inputWidth} = this.state;
-      let drawWidth = (Number(inputWidth) + Number(XOffset));
+      const {ctx, xOffset, yOffset, inputFillColor, inputHeight, inputWidth} = this.state;
+      let drawWidth = (Number(inputWidth) + Number(xOffset));
       let drawHeight = (Number(inputHeight) + Number(yOffset));
-      ctx.fillStyle = "blue";
-      ctx.fillRect(Number(XOffset), Number(yOffset), drawWidth, drawHeight);
+      ctx.fillStyle = inputFillColor;
+      ctx.fillRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
       ctx.stroke();
-      console.log("Square drawn at:", "\nx1: ", XOffset, "\ny1: ", yOffset, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
+      console.log("Square drawn at:", "\nx1: ", xOffset, "\ny1: ", yOffset, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
       console.log(this.state);
     }
     
     drawCircle = () => {
-      const {ctx} = this.state;
+      const {ctx, inputCircleRadius, inputFillColor, xOffset, yOffset} = this.state;
       ctx.beginPath();
-      ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-      ctx.fillStyle = "green";
+      ctx.arc(Number(xOffset), Number(yOffset), Number(inputCircleRadius,), 0, 2 * Math.PI);
+      ctx.fillStyle = inputFillColor;
       ctx.fill();
       ctx.stroke();
       console.log(this.state);
     }
     
     drawTriangle = () => {
-      const {ctx} = this.state;
+      const {ctx, inputFillColor} = this.state;
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);
       ctx.lineTo(100, 25);
-      ctx.fillStyle="red";
+      ctx.fillStyle = inputFillColor;
       ctx.fill();
       ctx.stroke();
       console.log(this.state);
@@ -81,7 +83,7 @@ class Canvas extends Component {
       ctx.rect(5,0, ctx.canvas.width-10, ctx.canvas.height);
       ctx.fill();
       ctx.stroke();
-      console.log("Browser size: \n", "Width:", canvasWidth, "Height", canvasHeight);
+      console.log("Canvas size: \n", "Width:", canvasWidth, "Height", canvasHeight);
     }
     
     componentDidMount() {
@@ -101,10 +103,12 @@ class Canvas extends Component {
   render() {
     
     const { 
-      XOffset,
-      yOffset,
+      inputCircleRadius,
+      inputFillColor,
       inputHeight,
-      inputWidth
+      inputWidth,
+      xOffset,
+      yOffset
     } = this.state;
     
     return (
@@ -118,16 +122,18 @@ class Canvas extends Component {
           drawTriangle={this.drawTriangle}
           handleInputChange={this.handleInputChange}
           handleInputFocus={this.handleInputFocus}
+          inputCircleRadius={inputCircleRadius}
+          inputFillColor={inputFillColor}
           inputHeight={inputHeight}
           inputWidth={inputWidth}
-          XOffset={XOffset}
+          xOffset={xOffset}
           yOffset={yOffset}
           
         />
       
         <section className="canvasContainer" ref="canvasContainer">
           
-          <canvas onClick={this.startMouseDrag} ref="canvas" height="100%" width="100%">
+          <canvas ref="canvas" height="100%" width="100%">
             Canvas (Your browser doesn't support the canvas element).
           </canvas>
         
