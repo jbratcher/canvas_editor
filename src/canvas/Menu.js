@@ -26,6 +26,7 @@ class Menu extends Component {
       handleInputFocus,
       inputCircleRadius,
       inputFillColor,
+      inputStrokeColor,
       inputHeight,
       inputWidth,
       xOffset,
@@ -138,6 +139,10 @@ class Menu extends Component {
                 </input>
               </label>
               
+            </section>
+            
+            <section className="column">
+              
               <label>fill color:
                 <input 
                   name="inputFillColor"
@@ -145,6 +150,18 @@ class Menu extends Component {
                   onFocus={handleInputFocus}
                   pattern="[0-9]*" 
                   value={inputFillColor}
+                  type="text" 
+                >
+                </input>
+              </label>
+              
+              <label>stroke color:
+                <input 
+                  name="inputStrokeColor"
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                  pattern="[0-9]*" 
+                  value={inputStrokeColor}
                   type="text" 
                 >
                 </input>

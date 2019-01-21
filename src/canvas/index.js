@@ -16,6 +16,7 @@ class Canvas extends Component {
           inputCircleRadius: 0,
           inputFillColor: "",
           inputHeight: 0,
+          inputStrokeColor: "",
           inputWidth: 0
         };
     }
@@ -27,34 +28,37 @@ class Canvas extends Component {
     }
     
     drawSquare = () => {
-      const {ctx, xOffset, yOffset, inputFillColor, inputHeight, inputWidth} = this.state;
+      const {ctx, xOffset, yOffset, inputFillColor, inputStrokeColor, inputHeight, inputWidth} = this.state;
       let drawWidth = (Number(inputWidth) + Number(xOffset));
       let drawHeight = (Number(inputHeight) + Number(yOffset));
       ctx.fillStyle = inputFillColor;
       ctx.fillRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
-      ctx.stroke();
+      ctx.strokeStyle = inputStrokeColor;
+      ctx.strokeRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
       console.log("Square drawn at:", "\nx1: ", xOffset, "\ny1: ", yOffset, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
       console.log(this.state);
     }
     
     drawCircle = () => {
-      const {ctx, inputCircleRadius, inputFillColor, xOffset, yOffset} = this.state;
+      const {ctx, inputCircleRadius, inputFillColor, inputStrokeColor, xOffset, yOffset} = this.state;
       ctx.beginPath();
       ctx.arc(Number(xOffset), Number(yOffset), Number(inputCircleRadius,), 0, 2 * Math.PI);
       ctx.fillStyle = inputFillColor;
       ctx.fill();
+      ctx.strokeStyle = inputStrokeColor;
       ctx.stroke();
       console.log(this.state);
     }
     
     drawTriangle = () => {
-      const {ctx, inputFillColor} = this.state;
+      const {ctx, inputFillColor, inputStrokeColor} = this.state;
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);
       ctx.lineTo(100, 25);
       ctx.fillStyle = inputFillColor;
       ctx.fill();
+      ctx.fillStyle = inputStrokeColor;
       ctx.stroke();
       console.log(this.state);
     }
@@ -78,7 +82,6 @@ class Canvas extends Component {
       const ctx = this.refs.canvas.getContext('2d');
       ctx.canvas.width  = canvasWidth;
       ctx.canvas.height = canvasHeight;
-      ctx.beginPath();
       ctx.fillStyle = "#eee";
       ctx.rect(5,0, ctx.canvas.width-10, ctx.canvas.height);
       ctx.fill();
@@ -106,6 +109,7 @@ class Canvas extends Component {
       inputCircleRadius,
       inputFillColor,
       inputHeight,
+      inputStrokeColor,
       inputWidth,
       xOffset,
       yOffset
@@ -125,6 +129,7 @@ class Canvas extends Component {
           inputCircleRadius={inputCircleRadius}
           inputFillColor={inputFillColor}
           inputHeight={inputHeight}
+          inputStrokeColor={inputStrokeColor}
           inputWidth={inputWidth}
           xOffset={xOffset}
           yOffset={yOffset}
