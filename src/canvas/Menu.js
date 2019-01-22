@@ -35,9 +35,9 @@ class Menu extends Component {
       
     return (
       
-      <React.Fragment>
+      <section className="menuContainer">
       
-        <section className="menuContainer ref=menuContainer">
+        <section className="functionsContainer">
         
           <button 
             className="drawSquare" 
@@ -70,6 +70,10 @@ class Menu extends Component {
         </section>
         
         <section className="attributesMenu">
+        
+          <i className="fas fa-angle-double-down"></i>
+          
+          <section className="atrributeInputs">
           
             <section className="column">
               <label>x: 
@@ -168,10 +172,12 @@ class Menu extends Component {
               </label>
               
             </section>
-          
+            
           </section>
           
-      </React.Fragment>
+        </section>
+          
+      </section>
       
     );
   }
