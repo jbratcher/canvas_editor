@@ -6,7 +6,12 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         
-        this.state = {};
+        this.state = {
+          circleSelected: false,
+          squareSelected: false,
+          selectedButtonColor: "green",
+          triangleSelected: false
+        };
     }
     
     componentDidMount() {
@@ -15,10 +20,20 @@ class Menu extends Component {
       
     }
     
+    selectSquare = () => {
+      this.setState({
+        circleSelected: false,
+        squareSelected: true,
+        triangleSelected: false
+      });
+      console.log("Square to draw selected");
+    }
+    
   render() {
       
     const {
       clearCanvas, 
+      drawAttributes,
       drawCircle, 
       drawSquare, 
       drawTriangle, 
@@ -29,6 +44,7 @@ class Menu extends Component {
       inputStrokeColor,
       inputHeight,
       inputWidth,
+      selectSquare,
       xOffset,
       yOffset
     } = this.props;
@@ -41,7 +57,11 @@ class Menu extends Component {
         
           <button 
             className="drawSquare" 
-            onClick={drawSquare}
+            onClick={this.selectSquare}
+            style={this.state.squareSelected 
+                    ? {backgroundColor: "#4DB6AC"} 
+                    : {backgroundColor: "#eee"}
+                  }
           >
             Draw Square
           </button>
@@ -172,6 +192,13 @@ class Menu extends Component {
               </label>
               
             </section>
+            
+            <button 
+              className="drawAttributesButton" 
+              onClick={drawAttributes}
+            >
+              Draw
+            </button>
             
           </section>
           

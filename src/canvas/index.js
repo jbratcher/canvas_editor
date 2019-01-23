@@ -27,6 +27,10 @@ class Canvas extends Component {
       this.updateCanvas();
     }
     
+    drawAttributes = () => {
+      console.log("attributes recorded")
+    }
+    
     drawSquare = () => {
       const {ctx, xOffset, yOffset, inputFillColor, inputStrokeColor, inputHeight, inputWidth} = this.state;
       let drawWidth = (Number(inputWidth) + Number(xOffset));
@@ -121,6 +125,7 @@ class Canvas extends Component {
       
         <Menu 
           clearCanvas={this.clearCanvas}
+          drawAttributes={this.drawAttributes}
           drawCircle={this.drawCircle}
           drawSquare={this.drawSquare}
           drawTriangle={this.drawTriangle}
