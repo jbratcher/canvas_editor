@@ -19,8 +19,6 @@ class App extends Component {
         
         <main>
         
-          <h2>Main Section</h2>
-          
           <Canvas />
         
         </main>

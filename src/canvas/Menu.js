@@ -9,7 +9,6 @@ class Menu extends Component {
         this.state = {
           circleSelected: false,
           squareSelected: false,
-          selectedButtonColor: "green",
           triangleSelected: false
         };
     }
@@ -20,13 +19,27 @@ class Menu extends Component {
       
     }
     
+    handleSelect = (e) => {
+      console.log(e.target.name);
+      return !(this.state[e.target.name])
+        ? this.setState({
+            [e.target.name]: true
+          })  
+        : this.setState({
+          [e.target.name]: false
+        });
+    }
+    
     selectSquare = () => {
-      this.setState({
-        circleSelected: false,
-        squareSelected: true,
-        triangleSelected: false
-      });
-      console.log("Square to draw selected");
+      return !this.state.squareSelected
+        ? (this.setState({
+          squareSelected: true
+        }),
+        console.log("Square to draw selected"))
+        : (this.setState({
+          squareSelected: false
+        }),
+        console.log("Square deselected"));
     }
     
   render() {
@@ -34,9 +47,6 @@ class Menu extends Component {
     const {
       clearCanvas, 
       drawAttributes,
-      drawCircle, 
-      drawSquare, 
-      drawTriangle, 
       handleInputChange,
       handleInputFocus,
       inputCircleRadius,
@@ -44,7 +54,6 @@ class Menu extends Component {
       inputStrokeColor,
       inputHeight,
       inputWidth,
-      selectSquare,
       xOffset,
       yOffset
     } = this.props;
@@ -57,25 +66,36 @@ class Menu extends Component {
         
           <button 
             className="drawSquare" 
-            onClick={this.selectSquare}
+            name="squareSelected"
+            onClick={this.handleSelect}
             style={this.state.squareSelected 
-                    ? {backgroundColor: "#4DB6AC"} 
-                    : {backgroundColor: "#eee"}
+                    ? {backgroundColor: "#9fa8da"} 
+                    : {backgroundColor: "#ddd"}
                   }
           >
             Draw Square
           </button>
           
           <button 
-            className="drawCircle" 
-            onClick={drawCircle}
+            className="drawCircle"
+            name="circleSelected"
+            onClick={this.handleSelect}
+            style={this.state.circleSelected 
+                    ? {backgroundColor: "#9fa8da"} 
+                    : {backgroundColor: "#ddd"}
+                  }
           >
               Draw Circle
           </button>
           
           <button 
             className="drawTriangle" 
-            onClick={drawTriangle}
+            name="triangleSelected"
+            onClick={this.handleSelect}
+            style={this.state.triangleSelected 
+                    ? {backgroundColor: "#9fa8da"} 
+                    : {backgroundColor: "#ddd"}
+                  }
           >
             Draw Triangle
             </button>

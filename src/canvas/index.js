@@ -13,7 +13,7 @@ class Canvas extends Component {
           canvasWidth: 0,
           xOffset: 0,
           yOffset: 0,
-          inputCircleRadius: 0,
+          inputCircleRadius: 1,
           inputFillColor: "",
           inputHeight: 0,
           inputStrokeColor: "",
@@ -51,6 +51,7 @@ class Canvas extends Component {
       ctx.fill();
       ctx.strokeStyle = inputStrokeColor;
       ctx.stroke();
+      console.log(`Cicle drawn at ${xOffset}, ${yOffset}`);
       console.log(this.state);
     }
     
@@ -62,7 +63,7 @@ class Canvas extends Component {
       ctx.lineTo(100, 25);
       ctx.fillStyle = inputFillColor;
       ctx.fill();
-      ctx.fillStyle = inputStrokeColor;
+      ctx.strokeStyle = inputStrokeColor;
       ctx.stroke();
       console.log(this.state);
     }
