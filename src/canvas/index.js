@@ -11,13 +11,16 @@ class Canvas extends Component {
           ctx: null,
           canvasHeight: 0,
           canvasWidth: 0,
+          circleSelected: false,
           xOffset: 0,
           yOffset: 0,
           inputCircleRadius: 1,
           inputFillColor: "",
           inputHeight: 0,
           inputStrokeColor: "",
-          inputWidth: 0
+          inputWidth: 0,
+          squareSelected: false,
+          triangleSelected: false
         };
     }
     
@@ -28,7 +31,14 @@ class Canvas extends Component {
     }
     
     drawAttributes = () => {
-      console.log("attributes recorded")
+      const { circleSelected, squareSelected, triangleSelected } = this.state;
+      return circleSelected
+       ? this.drawCircle()
+       : squareSelected
+       ? this.drawSquare()
+       : triangleSelected
+       ? this.drawTriangle()
+       : null;
     }
     
     drawSquare = () => {
@@ -80,6 +90,16 @@ class Canvas extends Component {
       console.log(e.target.name);
     }
     
+    handleSelect = e => {
+      console.log(e.target.name);
+      return !(this.state[e.target.name])
+        ? this.setState({
+            [e.target.name]: true
+          })  
+        : this.setState({
+          [e.target.name]: false
+        });
+    }
     
     updateCanvas() {
       const canvasHeight = this.refs.canvasContainer.offsetHeight;
@@ -111,11 +131,14 @@ class Canvas extends Component {
   render() {
     
     const { 
+      circleSelected,
       inputCircleRadius,
       inputFillColor,
       inputHeight,
       inputStrokeColor,
       inputWidth,
+      squareSelected,
+      triangleSelected,
       xOffset,
       yOffset
     } = this.state;
@@ -125,6 +148,7 @@ class Canvas extends Component {
       <React.Fragment>
       
         <Menu 
+          circleSelected={circleSelected}
           clearCanvas={this.clearCanvas}
           drawAttributes={this.drawAttributes}
           drawCircle={this.drawCircle}
@@ -132,11 +156,14 @@ class Canvas extends Component {
           drawTriangle={this.drawTriangle}
           handleInputChange={this.handleInputChange}
           handleInputFocus={this.handleInputFocus}
+          handleSelect={this.handleSelect}
           inputCircleRadius={inputCircleRadius}
           inputFillColor={inputFillColor}
           inputHeight={inputHeight}
           inputStrokeColor={inputStrokeColor}
           inputWidth={inputWidth}
+          squareSelected={squareSelected}
+          triangleSelected={triangleSelected}
           xOffset={xOffset}
           yOffset={yOffset}
           

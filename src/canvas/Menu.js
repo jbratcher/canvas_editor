@@ -7,9 +7,7 @@ class Menu extends Component {
         super(props);
         
         this.state = {
-          circleSelected: false,
-          squareSelected: false,
-          triangleSelected: false
+          
         };
     }
     
@@ -19,41 +17,22 @@ class Menu extends Component {
       
     }
     
-    handleSelect = (e) => {
-      console.log(e.target.name);
-      return !(this.state[e.target.name])
-        ? this.setState({
-            [e.target.name]: true
-          })  
-        : this.setState({
-          [e.target.name]: false
-        });
-    }
-    
-    selectSquare = () => {
-      return !this.state.squareSelected
-        ? (this.setState({
-          squareSelected: true
-        }),
-        console.log("Square to draw selected"))
-        : (this.setState({
-          squareSelected: false
-        }),
-        console.log("Square deselected"));
-    }
-    
   render() {
       
     const {
+      circleSelected,
       clearCanvas, 
       drawAttributes,
       handleInputChange,
       handleInputFocus,
+      handleSelect,
       inputCircleRadius,
       inputFillColor,
       inputStrokeColor,
       inputHeight,
       inputWidth,
+      squareSelected,
+      triangleSelected,
       xOffset,
       yOffset
     } = this.props;
@@ -67,8 +46,8 @@ class Menu extends Component {
           <button 
             className="drawSquare" 
             name="squareSelected"
-            onClick={this.handleSelect}
-            style={this.state.squareSelected 
+            onClick={handleSelect}
+            style={squareSelected 
                     ? {backgroundColor: "#9fa8da"} 
                     : {backgroundColor: "#ddd"}
                   }
@@ -79,8 +58,8 @@ class Menu extends Component {
           <button 
             className="drawCircle"
             name="circleSelected"
-            onClick={this.handleSelect}
-            style={this.state.circleSelected 
+            onClick={handleSelect}
+            style={circleSelected 
                     ? {backgroundColor: "#9fa8da"} 
                     : {backgroundColor: "#ddd"}
                   }
@@ -91,8 +70,8 @@ class Menu extends Component {
           <button 
             className="drawTriangle" 
             name="triangleSelected"
-            onClick={this.handleSelect}
-            style={this.state.triangleSelected 
+            onClick={handleSelect}
+            style={triangleSelected 
                     ? {backgroundColor: "#9fa8da"} 
                     : {backgroundColor: "#ddd"}
                   }
