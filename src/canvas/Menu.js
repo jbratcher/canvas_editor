@@ -48,8 +48,8 @@ class Menu extends Component {
             name="squareSelected"
             onClick={handleSelect}
             style={squareSelected 
-                    ? {backgroundColor: "#9fa8da"} 
-                    : {backgroundColor: "#ddd"}
+                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    : null
                   }
           >
             Draw Square
@@ -60,8 +60,8 @@ class Menu extends Component {
             name="circleSelected"
             onClick={handleSelect}
             style={circleSelected 
-                    ? {backgroundColor: "#9fa8da"} 
-                    : {backgroundColor: "#ddd"}
+                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    : null
                   }
           >
               Draw Circle
@@ -72,8 +72,8 @@ class Menu extends Component {
             name="triangleSelected"
             onClick={handleSelect}
             style={triangleSelected 
-                    ? {backgroundColor: "#9fa8da"} 
-                    : {backgroundColor: "#ddd"}
+                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    : null
                   }
           >
             Draw Triangle

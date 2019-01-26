@@ -107,7 +107,7 @@ class Canvas extends Component {
       const ctx = this.refs.canvas.getContext('2d');
       ctx.canvas.width  = canvasWidth;
       ctx.canvas.height = canvasHeight;
-      ctx.fillStyle = "#eee";
+      ctx.fillStyle = "#fff";
       ctx.rect(5,0, ctx.canvas.width-10, ctx.canvas.height);
       ctx.fill();
       ctx.stroke();
