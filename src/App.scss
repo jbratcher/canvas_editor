@@ -83,13 +83,34 @@ main {
 .attributesMenu {
   display: flex;
   flex-direction: column;
-
-  i.fas {
-    margin-bottom: 1rem
+  
+  &:target .attributeInputs {
+    transform: scaleY(0);
   }
   
-  .atrributeInputs{
+  #openNav {
+    display: block;
+    margin: 0.25rem 0 0.5rem;
+  }
+  
+  .attributeInputs {
     display: flex;
+    transform: scaleY(0);
+    transition: 0.5s all ease;
+    
+    &:target {
+      transform: scaleY(1);
+      
+      #closeNav {
+        display: flex;
+      }
+      
+    }
+    
+    #closeNav {
+      display: none;
+    }
+  
   }
   
   .column {

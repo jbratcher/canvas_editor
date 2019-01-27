@@ -39,7 +39,7 @@ class Menu extends Component {
       
     return (
       
-      <section className="menuContainer">
+      <section className="menuContainer" id="menuContainer">
       
         <section className="functionsContainer">
         
@@ -90,9 +90,11 @@ class Menu extends Component {
         
         <section className="attributesMenu">
         
-          <i className="fas fa-angle-double-down"></i>
+          <a href="#attributeInputs" id="openNav"><i className="fas fa-angle-double-down"></i></a>
           
-          <section className="atrributeInputs">
+          <section className="attributeInputs" id="attributeInputs">
+          
+          <a href="#attributesMenu"id="closeNav"><i className="fas fa-angle-double-up"></i></a>
           
             <section className="column">
               <label>x: 
