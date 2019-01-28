@@ -7,13 +7,27 @@ class Menu extends Component {
         super(props);
         
         this.state = {
-          
+          menuOpened: false,
+          menuOpenIcon: "fas fa-angle-double-down",
+          menuOpenStyle: {maxHeight: "10rem", transform: "scaleY(1)"},
+          menuCloseIcon: "fas fa-angle-double-up",
+          menuCloseStyle: {maxHeight: "0", transform: "scaleY(0)"}
         };
     }
     
     componentDidMount() {
      
       console.log("Menu Component loaded state: ", this.state);
+      
+    }
+    
+    handleMenuOpen = () => {
+      
+      const { menuOpened } = this.state;
+      
+      this.setState({
+        menuOpened: !menuOpened
+      });
       
     }
     
@@ -36,6 +50,14 @@ class Menu extends Component {
       xOffset,
       yOffset
     } = this.props;
+    
+    const { 
+      menuCloseIcon,
+      menuCloseStyle,
+      menuOpened,
+      menuOpenIcon,
+      menuOpenStyle
+    } = this.state;
       
     return (
       
@@ -90,11 +112,18 @@ class Menu extends Component {
         
         <section className="attributesMenu" id="attributesMenu">
         
-          <a href="#attributeInputs" id="openNav"><i className="fas fa-angle-double-down"></i></a>
+          <a href="#attributeInputs" id="openNav">
+            <i 
+              className={menuOpened ? menuCloseIcon : menuOpenIcon}
+              onClick={this.handleMenuOpen}
+            ></i>
+          </a>
           
-          <section className="attributeInputs" id="attributeInputs">
-          
-          <a href="#attributesMenu"id="closeNav"><i className="fas fa-times"></i></a>
+          <section 
+            className="attributeInputs" 
+            id="attributeInputs"
+            style={menuOpened ? menuOpenStyle : menuCloseStyle}
+          >
           
             <section className="column">
               <label>x: 

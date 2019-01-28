@@ -84,18 +84,9 @@ main {
   display: flex;
   flex-direction: column;
   
-  &:target .attributeInputs {
-    max-height: 0;
-    transform: scaleY(0);
-  }
-  
   #openNav {
     display: block;
     margin: 0.25rem 0 0.5rem;
-  }
-  
-  #closeNav {
-    display: none;
   }
   
   .attributeInputs {
@@ -104,21 +95,6 @@ main {
     max-height: 0;
     transform: scaleY(0);
     transition: 0.5s all ease;
-    
-    &:target {
-      max-height: 10rem;
-      transform: scaleY(1);
-      
-      #closeNav {
-        display: block;
-      }
-      
-    }
-    
-    #closeNav {
-      display: none;
-    }
-  
   }
   
   .column {
