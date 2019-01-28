@@ -88,13 +88,13 @@ class Menu extends Component {
           
         </section>
         
-        <section className="attributesMenu">
+        <section className="attributesMenu" id="attributesMenu">
         
           <a href="#attributeInputs" id="openNav"><i className="fas fa-angle-double-down"></i></a>
           
           <section className="attributeInputs" id="attributeInputs">
           
-          <a href="#attributesMenu"id="closeNav"><i className="fas fa-angle-double-up"></i></a>
+          <a href="#attributesMenu"id="closeNav"><i className="fas fa-times"></i></a>
           
             <section className="column">
               <label>x: 
