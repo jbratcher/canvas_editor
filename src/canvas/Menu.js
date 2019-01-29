@@ -70,7 +70,7 @@ class Menu extends Component {
             name="squareSelected"
             onClick={handleSelect}
             style={squareSelected 
-                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    ? {backgroundColor: inputFillColor} 
                     : null
                   }
           >
@@ -82,7 +82,7 @@ class Menu extends Component {
             name="circleSelected"
             onClick={handleSelect}
             style={circleSelected 
-                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    ? {backgroundColor: inputFillColor} 
                     : null
                   }
           >
@@ -94,7 +94,7 @@ class Menu extends Component {
             name="triangleSelected"
             onClick={handleSelect}
             style={triangleSelected 
-                    ? {backgroundColor: "#3f51b5", color: "#fff"} 
+                    ? {backgroundColor: inputFillColor} 
                     : null
                   }
           >
@@ -151,6 +151,8 @@ class Menu extends Component {
               </label>
             </section>
             
+            { squareSelected ?
+            
             <section className="column">
             
               <label>width: 
@@ -179,6 +181,10 @@ class Menu extends Component {
               
             </section>
             
+            : null }
+            
+            { circleSelected ?
+            
             <section className="column">
               
               <label>radius:
@@ -194,6 +200,8 @@ class Menu extends Component {
               </label>
               
             </section>
+            
+            : null }
             
             <section className="column">
               

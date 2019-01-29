@@ -67,6 +67,7 @@ main {
 .menuContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .functionsContainer {
@@ -92,8 +93,6 @@ main {
   .attributeInputs {
     display: flex;
     margin: 0 0.5rem;
-    max-height: 0;
-    transform: scaleY(0);
     transition: 0.5s all ease;
   }
   
@@ -102,16 +101,19 @@ main {
   }
   
   label {
-    font-size: 0.75rem;
     padding-bottom: 0.5rem;
-  }
-  
-  input {
-    width: 2rem;
+    
+    input {
+      border-radius: 0.25rem;
+      margin-left: 0.5rem;
+      width: 3rem;
+    }
+    
   }
   
   .drawAttributesButton {
     margin: 0.5rem;
+    min-width: 5rem;
   }
     
 }
