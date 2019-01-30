@@ -65,16 +65,16 @@ class Menu extends Component {
       
         <section className="functionsContainer">
         
+          
           <button 
             className="drawSquare" 
             name="squareSelected"
             onClick={handleSelect}
             style={squareSelected 
-                    ? {backgroundColor: inputFillColor} 
+                    ? {backgroundColor: inputFillColor, borderColor: inputStrokeColor} 
                     : null
                   }
           >
-            Draw Square
           </button>
           
           <button 
@@ -82,11 +82,10 @@ class Menu extends Component {
             name="circleSelected"
             onClick={handleSelect}
             style={circleSelected 
-                    ? {backgroundColor: inputFillColor} 
+                    ? {backgroundColor: inputFillColor, borderColor: inputStrokeColor} 
                     : null
                   }
           >
-              Draw Circle
           </button>
           
           <button 
@@ -94,13 +93,14 @@ class Menu extends Component {
             name="triangleSelected"
             onClick={handleSelect}
             style={triangleSelected 
-                    ? {backgroundColor: inputFillColor} 
+                    ? {backgroundColor: inputFillColor, borderColor: inputStrokeColor} 
                     : null
                   }
           >
-            Draw Triangle
-            </button>
-          
+            
+
+          </button>
+
           <button 
             className="clearCanvas" 
             onClick={clearCanvas}

@@ -79,6 +79,29 @@ main {
     padding: 0.5rem;
   }
   
+  .drawSquare {
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+  }
+  
+  .drawCircle {
+    border-radius: 50%;
+    padding: 0.5rem 1rem;
+    
+  }
+  
+  .drawTriangle {
+    
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    width: 0; 
+    height: 0; 
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: calc(2rem * 0.866) solid black;
+  }
+  
 }
 
 .attributesMenu {
