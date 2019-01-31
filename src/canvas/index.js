@@ -131,6 +131,8 @@ class Canvas extends Component {
   render() {
     
     const { 
+      canvasHeight,
+      canvasWidth,
       circleSelected,
       inputCircleRadius,
       inputFillColor,
@@ -174,6 +176,8 @@ class Canvas extends Component {
           <canvas ref="canvas" height="100%" width="100%">
             Canvas (Your browser doesn't support the canvas element).
           </canvas>
+          
+          <section className="canvasDimensions">Canvas Size: {canvasWidth} x {canvasHeight}</section>
         
         </section>
       
