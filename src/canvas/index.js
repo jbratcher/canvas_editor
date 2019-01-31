@@ -90,6 +90,18 @@ class Canvas extends Component {
       console.log(e.target.name);
     }
     
+    handleResize = () => {
+      let canvasHeight = this.refs.canvasContainer.offsetHeight;
+      let canvasWidth = this.refs.canvasContainer.offsetWidth;
+      this.setState(prevState => {
+      return {
+        canvasHeight,
+        canvasWidth
+      };
+    });
+      
+    }
+    
     handleSelect = e => {
       console.log(e.target.name);
       return !(this.state[e.target.name])
@@ -102,8 +114,8 @@ class Canvas extends Component {
     }
     
     updateCanvas() {
-      const canvasHeight = this.refs.canvasContainer.offsetHeight;
-      const canvasWidth = this.refs.canvasContainer.offsetWidth;
+      let canvasHeight = this.refs.canvasContainer.offsetHeight;
+      let canvasWidth = this.refs.canvasContainer.offsetWidth;
       const ctx = this.refs.canvas.getContext('2d');
       ctx.canvas.width  = canvasWidth;
       ctx.canvas.height = canvasHeight;
@@ -121,11 +133,17 @@ class Canvas extends Component {
         canvasHeight: this.refs.canvasContainer.offsetHeight,
         canvasWidth: this.refs.canvasContainer.offsetWidth
       });
-     
+
       this.updateCanvas();
+      
+      window.addEventListener("resize", this.handleResize);
       
       console.log("Canvas Component loaded state: ", this.state);
       
+    }
+    
+    componentWillUnmount() {
+      window.removeEventListener("resize", this.handleResize);
     }
     
   render() {
@@ -177,7 +195,7 @@ class Canvas extends Component {
             Canvas (Your browser doesn't support the canvas element).
           </canvas>
           
-          <section className="canvasDimensions">Canvas Size: {canvasWidth} x {canvasHeight}</section>
+          <section className="canvasDimensions"><b>Canvas Size:</b> {canvasWidth} x {canvasHeight}</section>
         
         </section>
       
