@@ -93,12 +93,10 @@ class Canvas extends Component {
     handleResize = () => {
       let canvasHeight = this.refs.canvasContainer.offsetHeight;
       let canvasWidth = this.refs.canvasContainer.offsetWidth;
-      this.setState(prevState => {
-      return {
-        canvasHeight,
-        canvasWidth
-      };
-    });
+      this.setState({
+      canvasHeight: canvasHeight,
+      canvasWidth: canvasWidth
+    }, this.updateCanvas());
       
     }
     
