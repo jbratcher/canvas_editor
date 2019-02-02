@@ -1,6 +1,6 @@
 {
   "short_name": "Canvas Editor",
-  "name": "A HTML5 Canvas Editing App Built With React",
+  "name": "A project using React framework and HTML5 Canvas to create a graphicial editor",
   "icons": [
     {
       "src": "favicon.ico",
