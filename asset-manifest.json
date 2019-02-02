@@ -1,0 +1,13 @@
+{
+  "main.css": "/canvas_editor/static/css/main.e1fdcb04.chunk.css",
+  "main.js": "/canvas_editor/static/js/main.b748fa86.chunk.js",
+  "main.js.map": "/canvas_editor/static/js/main.b748fa86.chunk.js.map",
+  "static/js/1.046a9b4d.chunk.js": "/canvas_editor/static/js/1.046a9b4d.chunk.js",
+  "static/js/1.046a9b4d.chunk.js.map": "/canvas_editor/static/js/1.046a9b4d.chunk.js.map",
+  "runtime~main.js": "/canvas_editor/static/js/runtime~main.8860404a.js",
+  "runtime~main.js.map": "/canvas_editor/static/js/runtime~main.8860404a.js.map",
+  "static/css/main.e1fdcb04.chunk.css.map": "/canvas_editor/static/css/main.e1fdcb04.chunk.css.map",
+  "index.html": "/canvas_editor/index.html",
+  "precache-manifest.0db0ff66b7ec3239119096bd8d199ab2.js": "/canvas_editor/precache-manifest.0db0ff66b7ec3239119096bd8d199ab2.js",
+  "service-worker.js": "/canvas_editor/service-worker.js"
+}
