@@ -45,6 +45,8 @@ class Menu extends Component {
       inputStrokeColor,
       inputHeight,
       inputWidth,
+      saveCanvasAsImage,
+      saveLink,
       squareSelected,
       triangleSelected,
       xOffset,
@@ -107,6 +109,15 @@ class Menu extends Component {
           >
             Clear Canvas
           </button>
+          
+          <a 
+            className="downloadLink"
+            download={"canvas.jpg"}
+            href={saveLink} 
+            onClick={saveCanvasAsImage}
+          >
+            Download as Image
+          </a>
           
         </section>
         

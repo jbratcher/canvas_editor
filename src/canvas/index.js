@@ -19,6 +19,7 @@ class Canvas extends Component {
           inputHeight: 0,
           inputStrokeColor: "",
           inputWidth: 0,
+          saveLink: null,
           squareSelected: false,
           triangleSelected: false
         };
@@ -111,6 +112,13 @@ class Canvas extends Component {
         });
     }
     
+    saveCanvasAsImage = () => {
+      const ctx = this.refs.canvas.getContext('2d');
+      this.setState({
+        saveLink: ctx.canvas.toDataURL("image/jpg")
+      });
+    }
+    
     updateCanvas() {
       let canvasHeight = this.refs.canvasContainer.offsetHeight;
       let canvasWidth = this.refs.canvasContainer.offsetWidth;
@@ -130,7 +138,7 @@ class Canvas extends Component {
         ctx: this.refs.canvas.getContext('2d'),
         canvasHeight: this.refs.canvasContainer.offsetHeight,
         canvasWidth: this.refs.canvasContainer.offsetWidth
-      });
+      }, this.saveCanvasAsImage());
 
       this.updateCanvas();
       
@@ -150,11 +158,14 @@ class Canvas extends Component {
       canvasHeight,
       canvasWidth,
       circleSelected,
+      ctx,
       inputCircleRadius,
       inputFillColor,
       inputHeight,
       inputStrokeColor,
       inputWidth,
+      saveCanvasAsImage,
+      saveLink,
       squareSelected,
       triangleSelected,
       xOffset,
@@ -168,6 +179,7 @@ class Canvas extends Component {
         <Menu 
           circleSelected={circleSelected}
           clearCanvas={this.clearCanvas}
+          ctx={ctx}
           drawAttributes={this.drawAttributes}
           drawCircle={this.drawCircle}
           drawSquare={this.drawSquare}
@@ -180,6 +192,8 @@ class Canvas extends Component {
           inputHeight={inputHeight}
           inputStrokeColor={inputStrokeColor}
           inputWidth={inputWidth}
+          saveCanvasAsImage={saveCanvasAsImage}
+          saveLink={saveLink}
           squareSelected={squareSelected}
           triangleSelected={triangleSelected}
           xOffset={xOffset}
