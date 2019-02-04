@@ -112,7 +112,7 @@ class Menu extends Component {
           
           <a 
             className="downloadLink"
-            download={"canvas.jpg"}
+            download="canvas.png"
             href={saveLink} 
             onClick={saveCanvasAsImage}
           >

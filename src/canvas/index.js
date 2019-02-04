@@ -42,18 +42,6 @@ class Canvas extends Component {
        : null;
     }
     
-    drawSquare = () => {
-      const {ctx, xOffset, yOffset, inputFillColor, inputStrokeColor, inputHeight, inputWidth} = this.state;
-      let drawWidth = (Number(inputWidth) + Number(xOffset));
-      let drawHeight = (Number(inputHeight) + Number(yOffset));
-      ctx.fillStyle = inputFillColor;
-      ctx.fillRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
-      ctx.strokeStyle = inputStrokeColor;
-      ctx.strokeRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
-      console.log("Square drawn at:", "\nx1: ", xOffset, "\ny1: ", yOffset, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
-      console.log(this.state);
-    }
-    
     drawCircle = () => {
       const {ctx, inputCircleRadius, inputFillColor, inputStrokeColor, xOffset, yOffset} = this.state;
       ctx.beginPath();
@@ -63,20 +51,34 @@ class Canvas extends Component {
       ctx.strokeStyle = inputStrokeColor;
       ctx.stroke();
       console.log(`Cicle drawn at ${xOffset}, ${yOffset}`);
-      console.log(this.state);
+      this.saveCanvasAsImage();
+    }
+    
+    drawSquare = () => {
+      const {ctx, xOffset, yOffset, inputFillColor, inputStrokeColor, inputHeight, inputWidth} = this.state;
+      let drawWidth = (Number(inputWidth) + Number(xOffset));
+      let drawHeight = (Number(inputHeight) + Number(yOffset));
+      ctx.fillStyle = inputFillColor;
+      ctx.fillRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
+      ctx.strokeStyle = inputStrokeColor;
+      ctx.strokeRect(Number(xOffset), Number(yOffset), drawWidth, drawHeight);
+      console.log("Square drawn at:", "\nx1: ", xOffset, "\ny1: ", yOffset, "\nx2: ", drawWidth, "\ny2: ", drawHeight);
+      this.saveCanvasAsImage();
     }
     
     drawTriangle = () => {
-      const {ctx, inputFillColor, inputStrokeColor} = this.state;
+      const {ctx, inputFillColor, inputStrokeColor, xOffset, yOffset} = this.state;
+      let startx = Number(xOffset) + 75;
+      let starty = Number(yOffset) + 50;
       ctx.beginPath();
-      ctx.moveTo(75, 50);
-      ctx.lineTo(100, 75);
-      ctx.lineTo(100, 25);
+      ctx.moveTo(startx, starty);
+      ctx.lineTo(startx + 25, starty + 25);
+      ctx.lineTo(startx + 50, starty - 25);
       ctx.fillStyle = inputFillColor;
       ctx.fill();
       ctx.strokeStyle = inputStrokeColor;
       ctx.stroke();
-      console.log(this.state);
+      this.saveCanvasAsImage();
     }
     
     handleInputChange = e => {
@@ -113,9 +115,11 @@ class Canvas extends Component {
     }
     
     saveCanvasAsImage = () => {
+      
       const ctx = this.refs.canvas.getContext('2d');
+      
       this.setState({
-        saveLink: ctx.canvas.toDataURL("image/jpg")
+        saveLink: ctx.canvas.toDataURL()
       });
     }
     
@@ -138,9 +142,11 @@ class Canvas extends Component {
         ctx: this.refs.canvas.getContext('2d'),
         canvasHeight: this.refs.canvasContainer.offsetHeight,
         canvasWidth: this.refs.canvasContainer.offsetWidth
-      }, this.saveCanvasAsImage());
+      });
 
       this.updateCanvas();
+      
+      this.saveCanvasAsImage();
       
       window.addEventListener("resize", this.handleResize);
       
@@ -209,6 +215,12 @@ class Canvas extends Component {
           
           <section className="canvasDimensions"><b>Canvas Size:</b> {canvasWidth} x {canvasHeight}</section>
         
+        </section>
+        
+        <section>
+          
+          <img className="saveImagePreview" src={saveLink} alt="canvasImage"></img>
+          
         </section>
       
       </React.Fragment>
