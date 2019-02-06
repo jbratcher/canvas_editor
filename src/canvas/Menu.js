@@ -34,6 +34,7 @@ class Menu extends Component {
   render() {
       
     const {
+      brushToolSelected,
       circleSelected,
       clearCanvas, 
       drawAttributes,
@@ -66,6 +67,18 @@ class Menu extends Component {
       <section className="menuContainer" id="menuContainer">
       
         <section className="functionsContainer">
+        
+          <button 
+            className="brushTool" 
+            name="brushToolSelected"
+            onClick={handleSelect}
+            style={brushToolSelected 
+                    ? {backgroundColor: inputFillColor, borderColor: inputStrokeColor} 
+                    : null
+                  }
+          >
+            <i className="fas fa-paint-brush"></i>
+          </button>
         
           
           <button 

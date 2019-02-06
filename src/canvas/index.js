@@ -8,10 +8,14 @@ class Canvas extends Component {
         super(props);
         
         this.state = {
-          ctx: null,
+          brushToolSelected: false,
           canvasHeight: 0,
           canvasWidth: 0,
           circleSelected: false,
+          ctx: null,
+          cursorX: null,
+          cursorY: null,
+          drawing: false,
           xOffset: 0,
           yOffset: 0,
           inputCircleRadius: 1,
@@ -24,6 +28,18 @@ class Canvas extends Component {
           triangleSelected: false
         };
     }
+    
+    brushToolDraw = () => {
+      const {ctx, cursorX, cursorY, drawing, inputFillColor} = this.state;
+      console.log(drawing);
+        if(drawing) {
+          ctx.fillStyle = inputFillColor;
+          ctx.beginPath();
+          ctx.arc(cursorX, cursorY, 10, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+        requestAnimationFrame(this.brushToolDraw);
+      }
     
     clearCanvas = () => {
       const {ctx, canvasWidth, canvasHeight} = this.state;
@@ -85,12 +101,10 @@ class Canvas extends Component {
       this.setState({
         [e.target.name]: e.target.value
       });
-      console.log(e.target.name);
     }
     
     handleInputFocus = e => {
       e.target.value = "";
-      console.log(e.target.name);
     }
     
     handleResize = () => {
@@ -104,7 +118,6 @@ class Canvas extends Component {
     }
     
     handleSelect = e => {
-      console.log(e.target.name);
       return !(this.state[e.target.name])
         ? this.setState({
             [e.target.name]: true
@@ -120,6 +133,18 @@ class Canvas extends Component {
       
       this.setState({
         saveLink: ctx.canvas.toDataURL()
+      });
+    }
+    
+    startDraw = () => {
+      this.setState({
+        drawing: true
+      });
+    }
+    
+    stopDraw = () => {
+      return this.setState({
+        drawing: false
       });
     }
     
@@ -161,6 +186,8 @@ class Canvas extends Component {
   render() {
     
     const { 
+      brushToolDraw,
+      brushToolSelected,
       canvasHeight,
       canvasWidth,
       circleSelected,
@@ -173,6 +200,8 @@ class Canvas extends Component {
       saveCanvasAsImage,
       saveLink,
       squareSelected,
+      startDraw,
+      stopDraw,
       triangleSelected,
       xOffset,
       yOffset
@@ -183,6 +212,7 @@ class Canvas extends Component {
       <React.Fragment>
       
         <Menu 
+          brushToolSelected={brushToolSelected}
           circleSelected={circleSelected}
           clearCanvas={this.clearCanvas}
           ctx={ctx}
@@ -209,7 +239,13 @@ class Canvas extends Component {
       
         <section className="canvasContainer" ref="canvasContainer">
           
-          <canvas ref="canvas" height="100%" width="100%">
+          <canvas 
+            onMouseDown={startDraw}
+            onMouseMove={brushToolDraw}
+            onMouseUp={stopDraw}
+            height="100%"
+            ref="canvas" 
+            width="100%">
             Canvas (Your browser doesn't support the canvas element).
           </canvas>
           
